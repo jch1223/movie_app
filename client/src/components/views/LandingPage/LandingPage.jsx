@@ -7,9 +7,10 @@ import { Row } from "antd";
 function LandingPage() {
   const [Movies, setMovies] = useState([]);
   const [MainMovieImage, setMainMovieImage] = useState(null);
+  const [Page, setPage] = useState(1);
 
   useEffect(() => {
-    const endpotion = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=ko&page=1`;
+    const endpotion = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=ko&page=${Page}`;
 
     fetch(endpotion)
       .then((res) => {
@@ -17,10 +18,16 @@ function LandingPage() {
       })
       .then((data) => {
         console.log(data);
-        setMovies([...data.results]);
-        setMainMovieImage(data.results[0]);
+        setMovies([...Movies, ...data.results]);
+        if (Page === 1) {
+          setMainMovieImage(data.results[0]);
+        }
       });
-  }, []);
+  }, [Page]);
+
+  const loadMoreHandler = () => {
+    setPage(Page + 1);
+  };
 
   return (
     <>
@@ -59,7 +66,7 @@ function LandingPage() {
         </div>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <button>Load More</button>
+          <button onClick={loadMoreHandler}>Load More</button>
         </div>
       </div>
     </>
