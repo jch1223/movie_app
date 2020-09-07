@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
+import { Button } from "antd";
 import { HeartOutlined, HeartTwoTone } from "@ant-design/icons";
 function Favorite({ movieInfo, userFrom, movieId }) {
   const movieTitle = movieInfo.title;
   const moviePost = movieInfo.backdrop_path;
-  const movieRunTime = movieInfo.runTime;
+  const movieRunTime = movieInfo.runtime;
 
   const [FavoriteNumber, setFavoriteNumber] = useState(0);
   const [Favorited, setFavorited] = useState(false);
@@ -33,7 +34,7 @@ function Favorite({ movieInfo, userFrom, movieId }) {
         alert("정보를 가져오는데 실패했습니다");
       }
     });
-  }, []);
+  }, [variables]);
 
   const favoriteHandler = () => {
     if (Favorited) {
@@ -59,7 +60,7 @@ function Favorite({ movieInfo, userFrom, movieId }) {
 
   return (
     <div>
-      <button onClick={favoriteHandler}>
+      <Button onClick={favoriteHandler}>
         Favorite{" "}
         {Favorited ? (
           <HeartTwoTone twoToneColor="#eb2f96" />
@@ -67,7 +68,7 @@ function Favorite({ movieInfo, userFrom, movieId }) {
           <HeartOutlined />
         )}{" "}
         {FavoriteNumber}
-      </button>
+      </Button>
     </div>
   );
 }

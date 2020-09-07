@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { BASE_URL, API_KEY, IMAGE_BASE_URL } from "../../Config";
-import { Row } from "antd";
+import { Row, Button } from "antd";
 import MainImage from "../LandingPage/Sections/MainImage";
 import GridCards from "../common/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
@@ -19,6 +19,7 @@ function MovieDetail(props) {
         return res.json();
       })
       .then((data) => {
+        console.log(data);
         setMovie(data);
       });
 
@@ -30,7 +31,7 @@ function MovieDetail(props) {
         console.log(data);
         setCasts(data.cast);
       });
-  }, []);
+  }, [movieId]);
 
   const toggleHandler = () => {
     setActorToggle(!ActorToggle);
@@ -78,7 +79,7 @@ function MovieDetail(props) {
         <div
           style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
         >
-          <button onClick={toggleHandler}>Toggle Actor View</button>
+          <Button onClick={toggleHandler}>Toggle Actor View</Button>
         </div>
 
         {ActorToggle && (

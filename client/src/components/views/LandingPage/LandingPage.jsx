@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BASE_URL, IMAGE_BASE_URL, API_KEY } from "../../Config";
 import MainImage from "./Sections/MainImage";
 import GridCards from "../common/GridCards";
-import { Row } from "antd";
+import { Row, Button } from "antd";
 
 function LandingPage() {
   const [Movies, setMovies] = useState([]);
@@ -23,7 +23,7 @@ function LandingPage() {
           setMainMovieImage(data.results[0]);
         }
       });
-  }, [Page]);
+  }, [Page, Movies]);
 
   const loadMoreHandler = () => {
     setPage(Page + 1);
@@ -66,7 +66,7 @@ function LandingPage() {
         </div>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <button onClick={loadMoreHandler}>Load More</button>
+          <Button onClick={loadMoreHandler}>Load More</Button>
         </div>
       </div>
     </>
