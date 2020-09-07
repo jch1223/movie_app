@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BASE_URL, API_KEY, IMAGE_BASE_URL } from "../../Config";
 import { Row, Button } from "antd";
 import MainImage from "../LandingPage/Sections/MainImage";
@@ -19,7 +18,7 @@ function MovieDetail(props) {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        console.log("get movie detail", data);
         setMovie(data);
       });
 
@@ -28,7 +27,7 @@ function MovieDetail(props) {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        console.log("get movie credits", data);
         setCasts(data.cast);
       });
   }, [movieId]);
@@ -86,9 +85,10 @@ function MovieDetail(props) {
           <Row gutter={[16, 16]}>
             {Casts &&
               Casts.map((cast, i) => {
-                return (
-                  <div key={i}>
+                if (cast.profile_path) {
+                  return (
                     <GridCards
+                      key={i}
                       image={
                         cast.profile_path
                           ? `${IMAGE_BASE_URL}/w500/${cast.profile_path}`
@@ -96,8 +96,8 @@ function MovieDetail(props) {
                       }
                       characterName={cast.character}
                     />
-                  </div>
-                );
+                  );
+                }
               })}
           </Row>
         )}

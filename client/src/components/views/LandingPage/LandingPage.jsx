@@ -17,13 +17,13 @@ function LandingPage() {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
-        setMovies([...Movies, ...data.results]);
+        console.log("movies data", data);
+        setMovies((Movies) => [...Movies, ...data.results]);
         if (Page === 1) {
           setMainMovieImage(data.results[0]);
         }
       });
-  }, [Page, Movies]);
+  }, [Page]);
 
   const loadMoreHandler = () => {
     setPage(Page + 1);

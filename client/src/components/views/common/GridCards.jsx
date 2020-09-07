@@ -4,14 +4,10 @@ import { Col } from "antd";
 function GridCards({ image, movieId, movieName, characterName }) {
   return (
     <Col lg={6} md={8} xs={24}>
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", height: "320px" }}>
         {movieId ? (
           <a href={`/movie/${movieId}`}>
-            <img
-              style={{ width: "100%", height: "320px" }}
-              src={image}
-              alt={movieName}
-            />
+            <img style={{ width: "100%" }} src={image} alt={movieName} />
           </a>
         ) : (
           <img

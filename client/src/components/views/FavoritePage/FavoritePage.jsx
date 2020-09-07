@@ -15,6 +15,7 @@ function FavoritePage(props) {
       userFrom: localStorage.getItem("userId"),
     }).then((res) => {
       if (res.data.success) {
+        console.log("getFavoredMovie", res.data);
         setFavorites(res.data.favorites);
       } else {
         alert("영화 정보를 가져오는데 실패 했습니다.");
