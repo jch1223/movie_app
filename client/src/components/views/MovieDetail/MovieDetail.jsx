@@ -48,7 +48,7 @@ function MovieDetail(props) {
       )}
 
       {/* body */}
-      <div style={{ width: "85%", margin: "1rem auto" }}>
+      <div style={{ width: "60%", margin: "1rem auto" }}>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
           {Movie && (
             <Favorite
