@@ -1,18 +1,13 @@
-Hello, My Friends  
-Thank you for having interest in this repository ! 
+### **_Introduction Project_**
 
-To use this application, 
+react, node.js, mongoDB를 사용하여 movie리스트를 api를 호출하여 보여주고, 즐겨찾기, 로그인 기능이 있는 프로젝트
 
-1. make dev.js file inside config folder 
-2. put mongoDB info into dev.js file 
-3. Type  " npm install " inside the root directory  ( Download Server Dependencies ) 
-4. Type " npm install " inside the client directory ( Download Front-end Dependencies )
+### _contribution_
 
+- 회원 가입 시에 패스워드를 bycrpy를 이용하여 암호화
+- 로그인 시에 jwt를 사용하여 토큰을 생성. 생성된 토큰은 cookie를 통해 클라이언트에 보내고 mongoDB에도 저장하여 로그인을 유지 시킨다. 서버에서 jwt토큰의 유효시간은 1시간이지만 특별한 보안을 요구하는 프로젝트가 아니어서 cookie에서 expires를 설정하지 않고 클라이언트와 db의 jwt토큰이 같으면 인증되는 방식으로 구현하였다. jwt토큰은 로그아웃 또는 다른 클라이언트로 접속 하지 않는 이상 변경되지 않는다
+- 즐겨찾기를 등록/삭제 할 수 있고, 즐겨찾기한 총 유저의 숫자가 표시된다
 
-If you have problem, feel free to ask me ^^ 
+### _Deploy_
 
-You can watch the tutorial for this app.
-
-https://www.youtube.com/channel/UCFyXA9x8lpL3EYWeYhj4C4Q?view_as=subscriber
-
-
+[React App](https://movielist-jch.herokuapp.com/)
